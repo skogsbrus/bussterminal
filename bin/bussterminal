@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+const bussterminal = require('../lib/app');
+const program = require('commander');
+const pkg = require('../package');
+
+program
+  .version(pkg.version)
+  .description(pkg.description)
+  .usage('[options]')
+  .option('-f, --from <FROM>', 'required: shows departures from FROM unless -t flag is supplied')
+  .option('-t, --to   <TO>', 'used with -f: Shows journeys from FROM to TO')
+  .option('-l, --line <LINE>', 'used with -f: Filters output to only include departures matching LINE')
+
+const help = `
+  Examples:
+    $ bussterminal --help                   # show help
+    $ bussterminal --version                # show version
+    $ bussterminal -f "lund c" -t triangeln # show journeys from Lund C to Malmö Triangeln
+    $ bussterminal -f lth                   # show departures from Lund LTH
+    $ bussterminal -f lth -l 20             # show line 20's departures from Lund LTH
+`;
+
+program.on('--help', () => {
+  console.log(help);
+});
+
+
+program.parse(process.argv);
+
+const from = program.from
+const to = program.to
+const line = program.line
+
+if (!from) {
+    program.outputHelp()
+    console.log("Error: You need to specify a departure location with the -f flag")
+}
+else if (from && to && line) {
+    program.outputHelp()
+    console.log("Error: -l option is not supported in conjunction with -t option")
+}
+else if (from && to ) {
+    bussterminal.showJourneys(from, to)
+}
+else if (from) {
+    bussterminal.showDepartures(from, line)
+}

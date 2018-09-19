@@ -1,0 +1,37 @@
+{
+  "name": "bussterminal",
+  "version": "1.0.0",
+  "description": "An terminal application that lets you access live info from Skånetrafiken, avoiding the hassle of visiting their web page.",
+  "main": "app.js",
+  "bin": {
+    "bussterminal": "bin/bussterminal"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johan-andersson01/bussterminal.git"
+  },
+  "keywords": [
+    "skåne",
+    "bus",
+    "train",
+    "public",
+    "transport"
+  ],
+  "author": "Johan Andersson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johan-andersson01/bussterminal/issues"
+  },
+  "homepage": "https://github.com/johan-andersson01/bussterminal#readme",
+  "dependencies": {
+    "commander": "^2.18.0",
+    "node-skanetrafiken": "^1.0.1"
+  },
+  "devDependencies": {
+    "commander": "^2.18.0",
+    "node-skanetrafiken": "^1.0.1"
+  }
+}
