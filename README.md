@@ -1,6 +1,6 @@
 # bussterminal
 
-An terminal application that lets you access live info from Skånetrafiken, avoiding the hassle of visiting [their web page](https://www.skanetrafiken.se/).
+An application that lets you access live info from Skånetrafiken, without leaving the terminal.
 
 #### buss|terminal
 - substantiv: ~en ~er
