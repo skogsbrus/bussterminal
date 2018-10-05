@@ -41,3 +41,18 @@ Options:
 
 <img src='usage.gif' alt='Usage demonstration'>
 
+## Annotated example
+
+```
+Journeys from Lund C to Lund LTH
+19:24 → 19:31                                   # original schedule
+	19:32 - 19:37:	Lund C → Lund LTH (6)   # bus is 8 minutes late
+19:44 → 19:51                                   # original schedule
+	19:49 - 19:56:	Lund C → Lund LTH (6)   # bus is 5 minutes late
+20:04 → 20:11                                   # original schedule
+	20:04 - 20:11:	Lund C → Lund LTH (6)   # bus is on time
+20:24 → 20:31                                   # original schedule
+	20:24 - 20:31:	Lund C → Lund LTH (6)   # bus is on time
+20:44 → 20:51                                   # original schedule
+	20:44 - 20:51:	Lund C → Lund LTH (6)   # bus is on time
+```
