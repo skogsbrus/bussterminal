@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-const bussterminal = require('../lib/app');
+/* eslint no-console: ["error", { allow: ["log", "warn"] }] */
 const program = require('commander');
+const bussterminal = require('../lib/app');
 const pkg = require('../package');
 
 program
@@ -9,7 +10,7 @@ program
   .usage('[options]')
   .option('-f, --from <FROM>', 'required: shows departures from FROM unless -t flag is supplied')
   .option('-t, --to   <TO>', 'used with -f: Shows journeys from FROM to TO')
-  .option('-l, --line <LINE>', 'used with -f: Filters output to only include departures matching LINE')
+  .option('-l, --line <LINE>', 'used with -f: Filters output to only include departures matching LINE');
 
 const help = `
   Examples:
@@ -27,21 +28,18 @@ program.on('--help', () => {
 
 program.parse(process.argv);
 
-const from = program.from
-const to = program.to
-const line = program.line
+const { from: from } = program;
+const { to: to } = program;
+const { line: line } = program;
 
 if (!from) {
-    program.outputHelp()
-    console.log("Error: You need to specify a departure location with the -f flag")
-}
-else if (from && to && line) {
-    program.outputHelp()
-    console.log("Error: -l option is not supported in conjunction with -t option")
-}
-else if (from && to ) {
-    bussterminal.showJourneys(from, to)
-}
-else if (from) {
-    bussterminal.showDepartures(from, line)
+  program.outputHelp();
+  console.log('Error: You need to specify a departure location with the -f flag');
+} else if (from && to && line) {
+  program.outputHelp();
+  console.log('Error: -l option is not supported in conjunction with -t option');
+} else if (from && to) {
+  bussterminal.showJourneys(from, to);
+} else if (from) {
+  bussterminal.showDepartures(from, line);
 }
